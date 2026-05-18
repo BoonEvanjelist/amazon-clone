@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ReduxProvider } from "@/store/Provider";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -14,11 +14,12 @@ const inter = Inter({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+// Use Inter as fallback display font (builds offline too)
+const jakarta = Inter({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700", "800"],
 });
 
 export const metadata: Metadata = {

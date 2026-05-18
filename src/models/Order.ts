@@ -19,7 +19,6 @@ export interface IShippingAddress {
 }
 
 export interface IOrder extends Document {
-  _id: string;
   user: mongoose.Types.ObjectId;
   items: IOrderItem[];
   shippingAddress: IShippingAddress;

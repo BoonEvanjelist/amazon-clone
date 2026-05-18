@@ -47,6 +47,7 @@ export default function ProductCard({ product, view = "grid" }: { product: Produ
       image: product.images?.[0] || "",
       quantity: 1,
       stock: product.stock,
+      slug: product.slug || product._id,
     }));
     toast.success("Added to cart!", { icon: "🛒" });
   };

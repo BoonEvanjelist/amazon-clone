@@ -13,7 +13,6 @@ export interface IAddress {
 }
 
 export interface IUser extends Document {
-  _id: string;
   name: string;
   email: string;
   password: string;
@@ -55,7 +54,8 @@ const UserSchema = new Schema<IUser>(
 );
 
 // Hash password before saving
-UserSchema.pre("save", async function (next) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(UserSchema as any).pre("save", async function (this: IUser, next: () => void) {
   if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(12);
   this.password = await bcrypt.hash(this.password, salt);
@@ -70,7 +70,8 @@ UserSchema.methods.comparePassword = async function (
 
 // Remove password from JSON output
 UserSchema.set("toJSON", {
-  transform: (_, ret) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  transform: (_: any, ret: any) => {
     delete ret.password;
     return ret;
   },

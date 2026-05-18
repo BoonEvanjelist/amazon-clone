@@ -39,6 +39,8 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const dbConnect = (await import("@/lib/dbConnect")).default;
+    const Product = (await import("@/models/Product")).default;
     await dbConnect();
     const { id } = await params;
     const body = await req.json();
@@ -64,6 +66,8 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const dbConnect = (await import("@/lib/dbConnect")).default;
+    const Product = (await import("@/models/Product")).default;
     await dbConnect();
     const { id } = await params;
     await Product.findByIdAndDelete(id);

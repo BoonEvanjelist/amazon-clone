@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 import Order from "@/models/Order";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-03-31.basil",
+  apiVersion: "2026-04-22.dahlia",
 });
 
 export async function POST(req: NextRequest) {

@@ -9,7 +9,6 @@ export interface IReview {
 }
 
 export interface IProduct extends Document {
-  _id: string;
   title: string;
   slug: string;
   description: string;

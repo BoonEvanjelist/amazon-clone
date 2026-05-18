@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductsPageSkeleton } from "@/components/ui/Skeleton";
@@ -48,6 +48,14 @@ function FilterSection({ title, children, defaultOpen = true }: {
 }
 
 export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="section py-8"><ProductsPageSkeleton count={12} /></div>}>
+      <ProductsPageInner />
+    </Suspense>
+  );
+}
+
+function ProductsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -371,4 +379,5 @@ export default function ProductsPage() {
       )}
     </div>
   );
-}
+}  // end ProductsPageInner
+
