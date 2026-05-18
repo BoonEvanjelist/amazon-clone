@@ -51,6 +51,9 @@ http://localhost:3000
 ```
 
 ---
+## Live Demo
+
+https://amazon-clone-3ctdc56jy-boon-evanjelist-s-projects.vercel.app
 
 ## 👨‍💻 Author
 
